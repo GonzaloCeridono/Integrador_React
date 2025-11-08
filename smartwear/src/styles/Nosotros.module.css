@@ -1,0 +1,122 @@
+main {
+  background: linear-gradient(135deg, #dbe9ff, #f5d8e6);
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #1a1a1a;
+  padding-top: 7rem;
+}
+
+/* ===== INTRO ===== */
+.intro {
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 5rem;
+  padding: 0 2rem;
+}
+
+.intro h1 {
+  font-family: var(--fuente-titulo);
+  color: var(--color-acento);
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.final {
+  font-style: italic;
+  color: var(--color-acento);
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+/* ===== BENEFICIOS ===== */
+.benefits {
+  width: 100%;
+  text-align: center;
+  padding: 4rem 2rem 6rem;
+}
+
+.texto {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.texto h2 {
+  font-family: var(--fuente-titulo);
+  font-size: 2rem;
+  color: #0d1b2a;
+  margin-bottom: 1rem;
+}
+
+.texto p {
+  color: #333;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* ===== CARDS ===== */
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 230px;
+  height: 200px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-weight: 600;
+  color: #222;
+  font-size: 1rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .intro h1 {
+    font-size: 2.2rem;
+  }
+
+  .cards {
+    gap: 1.5rem;
+  }
+
+  .card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+  }
+}

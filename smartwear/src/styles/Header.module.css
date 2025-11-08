@@ -1,0 +1,245 @@
+/* ========== NAVBAR GENERAL ========== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  width: 100%;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.logoLink {
+  font-family: var(--fuente-titulo);
+  font-size: 1.7rem;
+  color: var(--color-acento);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+/* ========== NAVEGACIÓN PRINCIPAL ========== */
+
+.barraNavegacion {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  transition: transform 0.3s ease-in-out;
+}
+
+.barraNavegacion a {
+  padding: 0.4rem 0.8rem;
+  color: black;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transform: scale(0.95);
+  transition: all 0.3s ease-in-out;
+  border-radius: 0.3rem;
+}
+
+.barraNavegacion a:hover {
+  transform: scale(1.15);
+}
+
+/* ========== BOTÓN CARRITO ========== */
+
+.iconoCarrito {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}
+
+.abrirCarrito {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: var(--color-principal);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+/* ========== BOTÓN LOGIN ========== */
+
+.btnLogin {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: 1px solid var(--color-acento);
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: var(--color-acento);
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.95rem;
+}
+
+.btnLogin:hover {
+  background-color: var(--color-acento);
+  color: white;
+}
+
+.iconoUsuario {
+  width: 18px;
+  height: 18px;
+}
+
+.btnLoginMobile {
+  display: none;
+}
+
+/* ========== CONTENEDOR DE ACCIONES (CARRITO + LOGIN + MENÚ) ========== */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+/* ========== BOTÓN MENÚ (HAMBURGUESA) ========== */
+
+.btnMenuLabel {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 1102;
+}
+
+.btnMenuLabel img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 860px) {
+  .header {
+    padding: 0.9rem 1.2rem;
+    gap: 0.5rem;
+  }
+
+  .logoLink {
+    flex: 1;
+  }
+
+  .btnMenuLabel {
+    display: flex;
+    order: 3;
+    margin-left: auto;
+  }
+
+  .actions {
+    order: 2;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    gap: 0.6rem;
+  }
+
+  .barraNavegacion {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-acento);
+    color: white;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 2rem 2rem;
+    border-radius: 0 0 1rem 1rem;
+    z-index: 1001;
+    gap: 1rem;
+    transform: translateY(-100vh);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .menuAbierto {
+    transform: translateY(0);
+  }
+
+  .barraNavegacion a {
+    width: 100%;
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 300;
+  }
+
+  .btnLogin {
+    display: none;
+  }
+
+  .btnLoginMobile {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: white;
+    color: var(--color-acento);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .btnLoginMobile:hover {
+    background-color: #346f7d;
+    color: white;
+  }
+}
+
+@media (max-width: 365px) {
+  .header {
+    padding: 0.7rem 1rem;
+  }
+
+  .logoLink {
+    font-size: 1.4rem;
+  }
+
+  .btnMenuLabel img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .actions {
+    gap: 0.4rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .logoLink {
+    font-size: 1.3rem;
+  }
+
+  .header {
+    padding: 0.6rem;
+  }
+
+  .actions {
+    gap: 0.3rem;
+  }
+
+  .barraNavegacion a {
+    font-size: 1rem;
+  }
+}

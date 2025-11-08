@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+:root {
+  --color-principal: #051331;
+  --color-acento: #7dc6d9;
+  --color-claro: #ffffff;
+  --color-fondo: linear-gradient(120deg, #dae9ff, #f8d6e1);
+  --fuente-titulo: "Quicksand", sans-serif;
+  --fuente-texto: "Outfit", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-margin-top: 80px;
+}
+
+html.restaurando-scroll {
+  scroll-behavior: auto !important;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  background: var(--color-fondo);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--color-principal);
+  line-height: 1.6;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+body.no-gradient {
+  background: #1a1a1a !important;
+  background-image: none !important;
+}
+
+@media (max-width: 860px) {
+  body {
+    background-attachment: scroll;
+  }
+}

@@ -1,0 +1,127 @@
+.home {
+  background: var(--color-fondo);
+  min-height: 100vh;
+  color: var(--color-principal);
+  font-family: var(--fuente-texto);
+  position: relative;
+  z-index: 1;
+}
+
+/* ======= ABOUT SECTION ======= */
+.aboutIntro {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.aboutIntro h2 {
+  font-family: var(--fuente-titulo);
+  font-size: 2.2rem;
+  color: var(--color-principal);
+  margin-bottom: 1rem;
+}
+
+.aboutIntro p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.btnSection {
+  background-color: var(--color-acento);
+  color: white;
+  padding: 0.9rem 1.8rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.btnSection:hover {
+  background-color: #00a1b4;
+  transform: translateY(-2px);
+}
+
+/* ======= PRODUCTOS DESTACADOS ======= */
+.destacados {
+  text-align: center;
+  padding: 4rem 2rem 6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.destacados h2 {
+  font-family: var(--fuente-titulo);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.destacados p {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 3; /* eleva solo la tarjeta en hover */
+}
+
+.card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.card h3 {
+  font-family: var(--fuente-titulo);
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.card p {
+  color: var(--color-acento);
+  font-weight: 600;
+}
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 600px) {
+  .aboutIntro {
+    padding: 3rem 1rem;
+  }
+
+  .destacados {
+    padding: 3rem 1rem 4rem;
+  }
+
+  .card img {
+    height: 220px;
+  }
+}

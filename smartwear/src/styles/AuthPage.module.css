@@ -1,0 +1,170 @@
+.authPage {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  color: white;
+}
+
+/* Panel izquierdo con efecto de fondo dinámico */
+.leftPanel {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  transform: scale(1.1);
+  transition: background-image 1s ease-in-out;
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  padding: 2rem;
+}
+
+.brand {
+  font-family: var(--fuente-titulo);
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.slogan {
+  font-family: var(--fuente-texto);
+  font-size: 1.2rem;
+  color: #ddd;
+  max-width: 80%;
+  text-align: center;
+}
+
+/* Panel derecho con formulario */
+.rightPanel {
+  font-family: var(--fuente-titulo);
+  flex: 1;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.rightPanel h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 400px;
+  gap: 1rem;
+}
+
+.form label {
+  text-align: left;
+  font-weight: 500;
+}
+
+.form input {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: white;
+  outline: none;
+}
+
+.form input:focus {
+  border: 1px solid #00bcd4;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #00bcd4;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0097a7;
+}
+
+.error {
+  color: #ff7070;
+  font-size: 0.85rem;
+}
+
+.switchText {
+  margin-top: 1.5rem;
+  color: #ccc;
+}
+
+.switchText a {
+  color: #00bcd4;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.switchText a:hover {
+  text-decoration: underline;
+}
+
+.backHome {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.backHome:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .authPage {
+    flex-direction: column;
+  }
+
+  .leftPanel {
+    height: 40vh;
+    display: none;
+  }
+
+  .rightPanel {
+    height: 60vh;
+  }
+
+  .brand {
+    font-size: 2rem;
+  }
+}
