@@ -15,7 +15,7 @@ const userSlice = createSlice({
       const newUser = action.payload;
       localStorage.setItem("registeredUser", JSON.stringify(newUser));
       state.user = newUser;
-      localStorage.setItem("user", JSON.stringify(newUser)); // lo logueamos directo después de registrarse
+      localStorage.setItem("user", JSON.stringify(newUser));
     },
     loginUser: (state, action) => {
       const { email, password } = action.payload;

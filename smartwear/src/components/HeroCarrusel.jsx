@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FaArrowDown } from "react-icons/fa";
 import styles from "../styles/HeroCarrusel.module.css";
 
-export default function HeroCarrusel() {
+export default function HeroCarrusel({ scrollToRef }) {
   const imagenes = [
     "assets/img/hero1.jpg",
     "assets/img/hero2.jpg",
@@ -21,6 +22,12 @@ export default function HeroCarrusel() {
     return () => clearInterval(intervalo);
   }, [imagenes.length]);
 
+  const handleScroll = () => {
+    if (scrollToRef?.current) {
+      scrollToRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className={styles.hero}>
       {imagenes.map((img, i) => (
@@ -35,9 +42,9 @@ export default function HeroCarrusel() {
         <div className={styles.content}>
           <h1>SmartWear</h1>
           <p>Estilo urbano. Elegancia sin esfuerzo.</p>
-          <Link to="/catalogo" className={styles.btn}>
-            Explorar colección
-          </Link>
+          <button className={styles.scrollDown} onClick={handleScroll}>
+            <FaArrowDown size={30} />
+          </button>
         </div>
       </div>
     </section>

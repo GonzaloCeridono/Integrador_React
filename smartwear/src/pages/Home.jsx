@@ -2,17 +2,19 @@ import { Link } from "react-router-dom";
 import { productos } from "../data/productos";
 import styles from "../styles/Home.module.css";
 import HeroCarrusel from "../components/HeroCarrusel";
+import { useRef } from "react";
 
 export default function Home() {
   const destacados = productos.slice(0, 4);
+  const aboutRef = useRef(null);
 
   return (
     <main className={styles.home}>
       {/* HERO */}
-      <HeroCarrusel />
+      <HeroCarrusel scrollToRef={aboutRef} />
 
       {/* ABOUT PREVIEW */}
-      <section className={styles.aboutIntro}>
+      <section className={styles.aboutIntro} ref={aboutRef}>
         <div className={styles.aboutContent}>
           <h2>Sobre nosotros</h2>
           <p>
