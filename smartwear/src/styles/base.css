@@ -53,3 +53,16 @@ body.no-gradient {
     background-attachment: scroll;
   }
 }
+
+/* Ocultar barra de scroll globalmente (sin desactivar el scroll) */
+html {
+  scrollbar-width: none;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}

@@ -38,6 +38,7 @@
 .brand {
   font-family: var(--fuente-titulo);
   font-size: 3rem;
+  color: #ddd;
   font-weight: 700;
   margin-bottom: 1rem;
   letter-spacing: 2px;

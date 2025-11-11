@@ -7,6 +7,7 @@ import Catalogo from "./pages/Catalogo";
 import Contacto from "./pages/Contacto";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Checkout from "./pages/Checkout";
 
 function App() {
   const location = useLocation();
@@ -30,6 +31,7 @@ function App() {
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/catalogo" element={<Catalogo />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Route>
 
       {/* Rutas sin layout (solo login y registro) */}

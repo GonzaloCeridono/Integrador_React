@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Carrito from "./Carrito";
 import { logoutUser } from "../features/user/userSlice";
 import styles from "../styles/Header.module.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,6 +10,7 @@ export default function Navbar() {
   const [menuAbierto, setMenuAbierto] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
+  const { items } = useSelector((state) => state.cart);
 
   const toggleMenu = () => setMenuAbierto(!menuAbierto);
   const handleLogout = () => {
@@ -20,11 +22,12 @@ export default function Navbar() {
     setMenuAbierto(false);
   };
 
+  const [abrirCarrito, setAbrirCarrito] = useState(false);
+
   return (
     <header className={styles.header}>
       <h1 className={styles.logoLink}>SmartWear</h1>
 
-      {/* Botón del menú (mobile) */}
       <button
         className={styles.btnMenuLabel}
         aria-label="Abrir menú"
@@ -33,7 +36,6 @@ export default function Navbar() {
         <img src="./assets/icons/menu.png" alt="Ícono de menú" />
       </button>
 
-      {/* Menú principal */}
       <nav
         className={`${styles.barraNavegacion} ${
           menuAbierto ? styles.menuAbierto : ""
@@ -52,7 +54,6 @@ export default function Navbar() {
           Contacto
         </Link>
 
-        {/* 👇 Botón Login/Cerrar sesión visible solo en menú móvil */}
         {user ? (
           <button onClick={handleLogout} className={styles.btnLoginMobile}>
             Cerrar sesión ({user.name})
@@ -64,15 +65,17 @@ export default function Navbar() {
         )}
       </nav>
 
-      {/* Acciones visibles en desktop */}
       <div className={styles.actions}>
-        <button className={styles.abrirCarrito}>
+        <button
+          className={styles.abrirCarrito}
+          onClick={() => setAbrirCarrito(true)}
+        >
           <img
             src="./assets/icons/carrito.png"
             alt="Ícono de carrito"
             className={styles.iconoCarrito}
           />
-          <span className={styles.cartCount}>0</span>
+          <span className={styles.cartCount}>{items.length}</span>
         </button>
 
         {user ? (
@@ -90,6 +93,8 @@ export default function Navbar() {
           </button>
         )}
       </div>
+
+      {abrirCarrito && <Carrito onClose={() => setAbrirCarrito(false)} />}
     </header>
   );
 }

@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
 import { productos } from "../data/productos";
 import styles from "../styles/Catalogo.module.css";
+import Swal from "sweetalert2";
 
 export default function Catalogo() {
   const [categoria, setCategoria] = useState("todo");
+  const dispatch = useDispatch();
 
   const categorias = [
     "todo",
@@ -47,7 +51,28 @@ export default function Catalogo() {
               <h3>{prod.nombre}</h3>
               <p className={styles.categoria}>{prod.categoria.join(" / ")}</p>
               <p className={styles.precio}>${prod.precio.toLocaleString()}</p>
-              <button className={styles.btnAgregar}>Agregar al carrito</button>
+              <button
+                className={styles.btnAgregar}
+                onClick={() => {
+                  dispatch(addToCart(prod));
+                  Swal.fire({
+                    toast: true,
+                    position: "top-end",
+                    icon: "success",
+                    title: `${prod.nombre} agregado al carrito`,
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    background: "#fff",
+                    color: "#051331",
+                    customClass: {
+                      popup: "agregado-toast",
+                    },
+                  });
+                }}
+              >
+                Agregar al carrito
+              </button>
             </div>
           ))
         ) : (
