@@ -187,8 +187,16 @@
 @media (max-width: 768px) {
   .drawer {
     width: 100%;
+    padding-bottom: 80px;
     border-radius: 12px 12px 0 0;
     animation: slideInMobile 0.3s ease forwards;
+  }
+
+  .footer {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding: 1rem;
   }
 
   @keyframes slideInMobile {
