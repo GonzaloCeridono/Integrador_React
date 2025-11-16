@@ -1,86 +1,104 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../features/cart/cartSlice";
+import { useState, useEffect } from "react";
 import { productos } from "../data/productos";
+import SidebarCategorias from "../components/SidebarCategorias";
+import BarraOrdenamiento from "../components/BarraOrdenamiento";
+import ProductoCard from "../components/ProductoCard";
 import styles from "../styles/Catalogo.module.css";
-import Swal from "sweetalert2";
 
 export default function Catalogo() {
   const [categoria, setCategoria] = useState("todo");
-  const dispatch = useDispatch();
+  const [orden, setOrden] = useState("");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const categorias = [
-    "todo",
-    "casual",
-    "urbano",
-    "elegante",
-    "accesorios",
-    "hombre",
-    "mujer",
-  ];
+  // CERRAR ASIDE MOBILE AL CLICKEAR FUERA
+  useEffect(() => {
+    const handleClickFuera = (e) => {
+      if (
+        mobileOpen &&
+        !e.target.closest(`.${styles.asideMobile}`) &&
+        !e.target.closest(`.${styles.btnAbrirMobile}`)
+      ) {
+        setMobileOpen(false);
+      }
+    };
 
+    document.addEventListener("click", handleClickFuera);
+    return () => document.removeEventListener("click", handleClickFuera);
+  }, [mobileOpen]);
+
+  // FILTRO POR CATEGORÍA
   const productosFiltrados = productos.filter(
-    (p) => categoria === "todo" || p.categoria.includes(categoria)
+    (prod) => categoria === "todo" || prod.categoria.includes(categoria)
   );
 
+  // ORDEN POR PRECIO
+  const productosOrdenados = [...productosFiltrados].sort((a, b) => {
+    if (orden === "menor") return a.precio - b.precio;
+    if (orden === "mayor") return b.precio - a.precio;
+    return 0;
+  });
+
   return (
-    <section className={styles.catalogoPage}>
-      <h1>Catálogo</h1>
+    <div className={styles.layout}>
+      {/* ASIDE DESKTOP */}
+      <aside className={styles.asideDesktop}>
+        <SidebarCategorias categoria={categoria} setCategoria={setCategoria} />
+      </aside>
 
-      {/* Filtro por categorías */}
-      <div className={styles.filtroCategorias}>
-        {categorias.map((cat) => (
+      {/* BOTÓN MOBILE */}
+      <button
+        className={styles.btnAbrirMobile}
+        onClick={() => setMobileOpen(true)}
+      >
+        Categorías
+      </button>
+
+      {/* ASIDE MOBILE */}
+      <div
+        className={`${styles.overlayMobile} ${
+          mobileOpen ? styles.overlayVisible : ""
+        }`}
+      >
+        <div
+          className={`${styles.asideMobile} ${
+            mobileOpen ? styles.asideVisible : ""
+          }`}
+        >
           <button
-            key={cat}
-            className={`${styles.btnCategoria} ${
-              categoria === cat ? styles.activo : ""
-            }`}
-            onClick={() => setCategoria(cat)}
+            className={styles.btnCerrar}
+            onClick={() => setMobileOpen(false)}
           >
-            {cat.toUpperCase()}
+            X
           </button>
-        ))}
+
+          <SidebarCategorias
+            categoria={categoria}
+            setCategoria={(cat) => {
+              setCategoria(cat);
+              setMobileOpen(false);
+            }}
+          />
+        </div>
       </div>
 
-      {/* Grid de productos */}
-      <div className={styles.gridProductos}>
-        {productosFiltrados.length > 0 ? (
-          productosFiltrados.map((prod) => (
-            <div key={prod.id} className={styles.card}>
-              <img src={prod.imagen} alt={prod.nombre} />
-              <h3>{prod.nombre}</h3>
-              <p className={styles.categoria}>{prod.categoria.join(" / ")}</p>
-              <p className={styles.precio}>${prod.precio.toLocaleString()}</p>
-              <button
-                className={styles.btnAgregar}
-                onClick={() => {
-                  dispatch(addToCart(prod));
-                  Swal.fire({
-                    toast: true,
-                    position: "top-end",
-                    icon: "success",
-                    title: `${prod.nombre} agregado al carrito`,
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true,
-                    background: "#fff",
-                    color: "#051331",
-                    customClass: {
-                      popup: "agregado-toast",
-                    },
-                  });
-                }}
-              >
-                Agregar al carrito
-              </button>
-            </div>
-          ))
-        ) : (
-          <p className={styles.sinResultados}>
-            No hay productos en esta categoría.
-          </p>
-        )}
-      </div>
-    </section>
+      {/* CONTENIDO */}
+      <main className={styles.contenido}>
+        <div className={styles.barraSuperior}>
+          <h2 className={styles.nombreCategoria}>
+            {categoria === "todo"
+              ? "Todos los productos"
+              : categoria.charAt(0).toUpperCase() + categoria.slice(1)}
+          </h2>
+
+          <BarraOrdenamiento setOrden={setOrden} />
+        </div>
+
+        <div className={styles.grid}>
+          {productosOrdenados.map((prod) => (
+            <ProductoCard key={prod.id} producto={prod} />
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }

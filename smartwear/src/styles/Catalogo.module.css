@@ -1,118 +1,134 @@
-.catalogoPage {
-  padding: 8rem 2rem 4rem;
-  text-align: center;
-  color: var(--color-principal);
-  background: var(--color-fondo);
-  min-height: 100vh;
-}
-
-.catalogoPage h1 {
-  font-family: var(--fuente-titulo);
-  margin-bottom: 2rem;
-  font-size: 2.2rem;
-}
-
-/* ======= FILTRO DE CATEGORÍAS ======= */
-
-.filtroCategorias {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
-}
-
-.btnCategoria {
-  background-color: transparent;
-  border: 2px solid var(--color-acento);
-  border-radius: 50px;
-  padding: 0.6rem 1.4rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--color-acento);
-  transition: all 0.3s ease;
-}
-
-.btnCategoria:hover {
-  background-color: var(--color-acento);
-  color: white;
-}
-
-.activo {
-  background-color: var(--color-acento);
-  color: white;
-  transform: scale(1.05);
-}
-
-/* ======= PRODUCTOS ======= */
-
-.gridProductos {
+/* LAYOUT GENERAL */
+.layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 250px 1fr;
   gap: 2rem;
+  padding: 7rem 2rem 3rem;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-.card {
-  background: white;
-  border-radius: 1rem;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  transition: transform 0.3s ease;
+/* ASIDE DESKTOP */
+.asideDesktop {
+  display: block;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
+/* CONTENIDO */
+.contenido {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 1rem;
 }
 
-.card h3 {
-  margin: 1rem 0 0.3rem;
+.barraSuperior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 0 0.3rem;
 }
 
-.categoria {
-  color: #666;
-  font-size: 0.9rem;
+.nombreCategoria {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
 }
 
-.precio {
-  font-weight: bold;
-  color: var(--color-acento);
-  margin-bottom: 1rem;
+/* PRODUCT GRID */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-.btnAgregar {
-  background-color: var(--color-acento);
-  border: none;
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
+/* BOTÓN MOBILE */
+.btnAbrirMobile {
+  display: none;
+}
+
+/* OVERLAY MOBILE */
+.overlayMobile {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
   transition: background 0.3s ease;
 }
 
-.btnAgregar:hover {
-  background-color: #00a3b2;
+.overlayVisible {
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: all;
 }
 
-.sinResultados {
-  grid-column: 1 / -1;
+/* ASIDE MOBILE */
+.asideMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #fff;
+  padding: 1.5rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+.asideVisible {
+  transform: translateX(0);
+}
+
+.btnCerrar {
+  background: transparent;
+  border: none;
   font-size: 1.2rem;
-  color: #777;
-  margin-top: 2rem;
+  cursor: pointer;
 }
 
-/* ======= RESPONSIVE ======= */
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .asideDesktop {
+    display: none;
+  }
+
+  .btnAbrirMobile {
+    display: block;
+    margin-bottom: 1rem;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    background: var(--color-acento);
+    color: #fff;
+    border: none;
+    font-weight: bold;
+  }
+}
 
 @media (max-width: 600px) {
-  .btnCategoria {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .barraSuperior {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .nombreCategoria {
+    width: 100%;
+    font-size: 1.2rem;
+  }
+
+  .barraSuperior select {
+    width: 100%;
   }
 }
