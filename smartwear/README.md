@@ -1,6 +1,6 @@
-# 🧥 SmartWear — Proyecto Final de React
+# 🧥 SmartWear — Proyecto Integrador de React
 
-**SmartWear** es un proyecto desarrollado como parte del curso de **React**, con el objetivo de aplicar los principales conceptos del ecosistema moderno de desarrollo frontend.  
+**SmartWear** es un proyecto desarrollado como parte del curso de **NUCBA** en Programacion web, con el objetivo de aplicar los principales conceptos del ecosistema moderno de desarrollo frontend.  
 El proyecto simula una **tienda online de indumentaria**, implementando gestión de usuarios, carrito de compras, validaciones, navegación dinámica y diseño responsive.
 
 ---
@@ -39,7 +39,7 @@ Todas las acciones cuentan con modales de confirmación mediante **SweetAlert2**
 
 Persistente entre sesiones, gestionado con Redux y almacenado en localStorage.
 
-### 💳 Checkout _(opcional implementado)_
+### 💳 Checkout
 
 Página que resume la compra antes de finalizarla.
 

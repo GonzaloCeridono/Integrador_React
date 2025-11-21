@@ -159,8 +159,6 @@ export default function Checkout() {
           >
             <option value="tarjeta">Tarjeta de crédito / débito</option>
             <option value="transferencia">Transferencia bancaria</option>
-            <option value="qr">Código QR</option>
-            <option value="efectivo">Efectivo / contra entrega</option>
           </select>
 
           <button type="submit" className={styles.btnConfirmar}>
