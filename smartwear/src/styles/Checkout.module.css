@@ -1,10 +1,7 @@
 .checkoutContainer {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 1.5rem;
-  width: 100%;
-  overflow-x: hidden;
-  box-sizing: border-box;
+  padding: 2rem;
 }
 
 h1 {
@@ -17,7 +14,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  width: 100%;
+  align-items: start;
 }
 
 .resumen {
@@ -25,16 +22,33 @@ h1 {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+}
+
+.listaScroll {
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 0.4rem;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--color-acento) transparent;
+  scrollbar-width: thin;
+}
+
+.listaScroll::-webkit-scrollbar {
+  width: 6px;
+}
+.listaScroll::-webkit-scrollbar-thumb {
+  background: #d2d2d2;
+  border-radius: 6px;
 }
 
 .item {
   display: flex;
   gap: 1rem;
   border-bottom: 1px solid #eee;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
+  padding: 0.8rem 0;
 }
 
 .item img {
@@ -46,9 +60,11 @@ h1 {
 
 .total {
   font-size: 1.2rem;
-  margin-top: 1rem;
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 2px solid #eee;
 }
 
 .formulario {
@@ -59,8 +75,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  height: 100%;
 }
 
 input,
@@ -70,9 +85,6 @@ select {
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
 }
 
 .btnConfirmar {
@@ -83,8 +95,7 @@ select {
   padding: 0.9rem;
   border-radius: 8px;
   cursor: pointer;
-  width: 100%;
-  box-sizing: border-box;
+  transition: background 0.2s;
 }
 
 .btnConfirmar:hover {
@@ -95,15 +106,19 @@ select {
   .checkoutGrid {
     grid-template-columns: 1fr;
   }
-}
-
-@media (max-width: 480px) {
-  .checkoutContainer {
-    padding: 1rem;
-  }
 
   .resumen,
   .formulario {
+    height: auto;
+  }
+
+  .listaScroll {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 400px) {
+  .checkoutContainer {
     padding: 1rem;
   }
 
@@ -114,21 +129,5 @@ select {
 
   .total {
     font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .checkoutContainer {
-    padding: 0.7rem;
-  }
-
-  .formulario h2,
-  .resumen h2 {
-    font-size: 1.1rem;
-  }
-
-  input,
-  select {
-    font-size: 0.9rem;
   }
 }
